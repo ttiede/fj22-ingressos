@@ -13,9 +13,41 @@ import br.com.caelum.ingresso.model.Sala;
 import br.com.caelum.ingresso.model.Sessao;
 
 /**
- * Created by nando on 03/03/17.
+ * Created by Tiago Tiede on 06/01/18.
  */
 public class SessaoForm {
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public Integer getSalaId() {
+		return salaId;
+	}
+
+	public void setSalaId(Integer salaId) {
+		this.salaId = salaId;
+	}
+
+	public LocalTime getHorario() {
+		return horario;
+	}
+
+	public void setHorario(LocalTime horario) {
+		this.horario = horario;
+	}
+
+	public Integer getFilmeID() {
+		return filmeID;
+	}
+
+	public void setFilmeID(Integer filmeID) {
+		this.filmeID = filmeID;
+	}
 
 	private Integer id;
 
