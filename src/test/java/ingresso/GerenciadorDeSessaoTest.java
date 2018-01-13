@@ -1,5 +1,6 @@
 package ingresso;
 
+import java.math.BigDecimal;
 import java.time.Duration;
 import java.time.LocalTime;
 import java.util.Arrays;
@@ -24,11 +25,12 @@ public class GerenciadorDeSessaoTest {
 	
 	@Before
 	public void preparaSessoes(){
-		this.rogueOne = new Filme("Rogue One", Duration.ofMinutes(120), "SCI-FI");
-		this.salda3d = new Sala("Salda 3D");
+		this.rogueOne = new Filme("Rogue One", Duration.ofMinutes(120), "SCI-FI", BigDecimal.ONE);
+		this.salda3d = new Sala("Salda 3D", BigDecimal.TEN);
 		this.sessaoDasDez = new Sessao(LocalTime.parse("10:00:00"), rogueOne, salda3d);
 		this.sessaoDasTreze = new Sessao(LocalTime.parse("13:00:00"), rogueOne, salda3d);
 		this.sessaoDasDezoito = new Sessao(LocalTime.parse("18:00:00"), rogueOne, salda3d);
+		
 	}
 	
 	@Test
@@ -64,5 +66,16 @@ public class GerenciadorDeSessaoTest {
 		GerenciadorDeSessao gerenciador = new GerenciadorDeSessao(sessoes);
 		
 		Assert.assertTrue(gerenciador.cabe(sessaoDasTreze));
+	}
+	
+	@Test
+	public void oPrecoDaSessaoDeveSerIgualASomaDoPrecoDaSalaMaisOPrecoDoFilme() {
+		Sala sala = new Sala("Eldorado - IMax", new BigDecimal("22.4"));
+		Filme filme = new Filme("Rogue One",Duration.ofMinutes(120), "SCI-FI", new BigDecimal("22.4"));
+		
+		BigDecimal somaDosPrecosDaSalaEFilme = sala.getPreco().add(filme.getPreco());
+		Sessao sessao = new Sessao(LocalTime.parse("10:00:00"), filme, sala);
+		
+		Assert.assertEquals(somaDosPrecosDaSalaEFilme, sessao.getPreco());
 	}
 }

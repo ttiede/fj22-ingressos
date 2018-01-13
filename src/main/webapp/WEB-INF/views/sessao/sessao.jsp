@@ -36,8 +36,7 @@
                     <span class="text-danger">${error.defaultMessage}</span>
                 </c:forEach>
             </div>
-
-
+			
             <button type="submit" class="btn btn-primary">Gravar</button>
         </form>
         </div>

@@ -41,11 +41,11 @@ public class FilmeController {
     @PostMapping("/admin/filme")
     @Transactional
     public ModelAndView salva(@Valid Filme filme, BindingResult result){
+    	System.out.println(filme.getDuracao());
 
         if (result.hasErrors()) {
             return form(Optional.ofNullable(filme.getId()), filme);
         }
-
         filmeDao.save(filme);
 
         ModelAndView view = new ModelAndView("redirect:/admin/filmes");
