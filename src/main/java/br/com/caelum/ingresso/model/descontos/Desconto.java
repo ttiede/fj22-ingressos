@@ -1,5 +1,7 @@
 package br.com.caelum.ingresso.model.descontos;
 
-public class Desconto {
+import java.math.BigDecimal;
 
+public interface Desconto {
+	BigDecimal aplicarDescontoSobre(BigDecimal precoOriginal);
 }
