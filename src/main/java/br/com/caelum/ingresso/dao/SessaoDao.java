@@ -20,7 +20,12 @@ public class SessaoDao {
 	public void save( Sessao sessao) {
 		manager.persist(sessao);
 	}
+	
 	public List<Sessao> buscaSessoesDaSala(Sala sala){
 		return manager.createQuery("SELECT s FROM Sessao s WHERE s.sala = :sala", Sessao.class).setParameter("sala", sala).getResultList();
+	}
+	
+	public List<Sessao> listaSessoesDaSala(){
+		return manager.createQuery("SELECT s FROM Sessao s", Sessao.class).getResultList();
 	}
 }
