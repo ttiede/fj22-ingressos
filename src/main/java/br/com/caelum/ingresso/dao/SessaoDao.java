@@ -34,4 +34,8 @@ public class SessaoDao {
 		return manager.createQuery("SELECT s FROM Sessao s WHERE s.filme = :filme", Sessao.class).setParameter("filme", filme).getResultList();
 		
 	}
+	
+	public Sessao fineOne(Integer id) {
+		return manager.find(Sessao.class, id);
+	}
 }
