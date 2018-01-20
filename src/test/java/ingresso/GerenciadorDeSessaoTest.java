@@ -67,15 +67,4 @@ public class GerenciadorDeSessaoTest {
 		
 		Assert.assertTrue(gerenciador.cabe(sessaoDasTreze));
 	}
-	
-	@Test
-	public void oPrecoDaSessaoDeveSerIgualASomaDoPrecoDaSalaMaisOPrecoDoFilme() {
-		Sala sala = new Sala("Eldorado - IMax", new BigDecimal("22.4"));
-		Filme filme = new Filme("Rogue One",Duration.ofMinutes(120), "SCI-FI", new BigDecimal("22.4"));
-		
-		BigDecimal somaDosPrecosDaSalaEFilme = sala.getPreco().add(filme.getPreco());
-		Sessao sessao = new Sessao(LocalTime.parse("10:00:00"), filme, sala);
-		
-		Assert.assertEquals(somaDosPrecosDaSalaEFilme, sessao.getPreco());
-	}
 }

@@ -43,7 +43,17 @@ public class SessaoTest {
 	}
 	
 	@Test
-	public void naoDeveConcederDescontoParaIngressoNormal() {	
+	public void oPrecoDaSessaoDeveSerIgualASomaDoPrecoDaSalaMaisOPrecoDoFilme() {
+		Sala sala = new Sala("Eldorado - IMax", new BigDecimal("22.4"));
+		Filme filme = new Filme("Rogue One",Duration.ofMinutes(120), "SCI-FI", new BigDecimal("22.4"));
+		
+		BigDecimal somaDosPrecosDaSalaEFilme = sala.getPreco().add(filme.getPreco());
+		Sessao sessao = new Sessao(LocalTime.parse("10:00:00"), filme, sala);
+		
+		Assert.assertEquals(somaDosPrecosDaSalaEFilme, sessao.getPreco());
+	}
+	@Test
+	public void garanteQueoLugarA1EstaOcupadoEOsLugaresA2A3EA4Disponiveis() {	
 		Ingresso ingresso = new Ingresso(sessaoDasDez, TipoDeIngresso.INTEIRO, lugar1);
 		Set<Ingresso> ingressos = Stream.of(ingresso).collect(Collectors.toSet()); 
 		sessaoDasDez.setIngressos(ingressos);
