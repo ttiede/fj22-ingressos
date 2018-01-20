@@ -8,8 +8,6 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-
-import br.com.caelum.ingresso.model.descontos.Desconto;
 /**
  * Created by Tiago Tiede on 13/01/18.
  */
